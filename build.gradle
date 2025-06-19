@@ -9,7 +9,7 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(24)
+		languageVersion = JavaLanguageVersion.of(21)
 	}
 }
 
@@ -44,7 +44,7 @@ tasks.jar {
 
 tasks.named('bootBuildImage') {
 	builder = 'paketobuildpacks/builder:base'
-	environment = ['BP_JVM_VERSION': '24'] // Ou sua versão do Java
+	environment = ['BP_JVM_VERSION': '21'] // Ou sua versão do Java
 }
 
 tasks.withType(Test).configureEach {
