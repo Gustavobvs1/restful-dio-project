@@ -7,17 +7,6 @@ plugins {
 group = 'dio'
 version = '0.0.1-SNAPSHOT'
 
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
-}
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
 
 repositories {
 	mavenCentral()
@@ -42,17 +31,6 @@ tasks.jar {
 	}
 }
 
-tasks.named('bootBuildImage') {
-	builder = 'paketobuildpacks/builder:base'
-	environment = ['BP_JVM_VERSION': '21'] // Ou sua versão do Java
-}
-
-tasks.withType(Test).configureEach {
-	useJUnitPlatform()
-	testLogging {
-		events "passed", "skipped", "failed"
-	}
-}
 
 tasks.named('test') {
 	useJUnitPlatform()
