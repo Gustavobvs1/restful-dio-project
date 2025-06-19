@@ -42,6 +42,18 @@ tasks.jar {
 	}
 }
 
+tasks.named('bootBuildImage') {
+	builder = 'paketobuildpacks/builder:base'
+	environment = ['BP_JVM_VERSION': '24'] // Ou sua versão do Java
+}
+
+tasks.withType(Test).configureEach {
+	useJUnitPlatform()
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
